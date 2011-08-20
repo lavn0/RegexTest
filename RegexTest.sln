@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexTest", "RegexTest\RegexTest.csproj", "{6A50C4F3-2AB5-4869-B06C-CC8B5FA1C461}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F55E443B-7F62-4CBD-AB86-824FD0BF1D5B} = {F55E443B-7F62-4CBD-AB86-824FD0BF1D5B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControl", "CustomControl\CustomControl.csproj", "{F55E443B-7F62-4CBD-AB86-824FD0BF1D5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A50C4F3-2AB5-4869-B06C-CC8B5FA1C461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A50C4F3-2AB5-4869-B06C-CC8B5FA1C461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A50C4F3-2AB5-4869-B06C-CC8B5FA1C461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A50C4F3-2AB5-4869-B06C-CC8B5FA1C461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F55E443B-7F62-4CBD-AB86-824FD0BF1D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F55E443B-7F62-4CBD-AB86-824FD0BF1D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F55E443B-7F62-4CBD-AB86-824FD0BF1D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F55E443B-7F62-4CBD-AB86-824FD0BF1D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
