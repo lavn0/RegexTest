@@ -47,6 +47,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToolStripSpringProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ToolStripSpringTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
