@@ -94,8 +94,17 @@
     <Compile Include="RegexTest\RegexMode.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="RegexTest\RegexModeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RegexTest\RegexModeControl.Designer.cs">
+      <DependentUpon>RegexModeControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="RegexTest\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegexTest\RegexModeControl.resx">
+      <DependentUpon>RegexModeControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
