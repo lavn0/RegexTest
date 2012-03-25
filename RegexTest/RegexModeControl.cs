@@ -139,7 +139,7 @@ namespace RegexTest
         {
             if (splitContainer2.Orientation == Orientation.Horizontal)
             {
-                splitContainer2.SplitterDistance = splitContainer2.Width * (splitContainer2.Panel1.Height + splitContainer3.SplitterWidth / 2) / splitContainer2.Height - +splitContainer2.SplitterWidth / 2;
+                splitContainer2.SplitterDistance = splitContainer2.Width * (splitContainer2.Panel1.Height + splitContainer2.SplitterWidth / 2) / splitContainer2.Height - +splitContainer2.SplitterWidth / 2;
                 splitContainer2.Orientation = Orientation.Vertical;
             }
             else
