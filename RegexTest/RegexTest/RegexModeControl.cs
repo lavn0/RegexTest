@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
@@ -20,13 +19,8 @@ namespace RegexTest
         public RegexModeControl()
         {
             InitializeComponent();
+            this.Disposed += this.RegexModeControl_Dispose;
             this.Text = @"C:\Program Files\TortoiseSVN\bin\TortoiseMerge.exe";
-        }
-
-        private void RegexModeControl_ParentChanged(object sender, EventArgs e)
-        {
-            // 親コンテンツの破棄時処理に追加
-            this.Parent.Disposed += this.RegexModeControl_Dispose;
         }
 
         private void RegexModeControl_Dispose(object sender, EventArgs e)

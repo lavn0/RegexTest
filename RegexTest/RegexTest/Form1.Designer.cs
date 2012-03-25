@@ -1,16 +1,11 @@
-﻿using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace RegexTest
+﻿namespace RegexTest
 {
-    public partial class Form1 : Form
+    public partial class Form1 : System.Windows.Forms.Form
     {
         /// <summary>
         /// 必要なデザイナ変数です。
         /// </summary>
-        private IContainer components = null;
+        private System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// 使用中のリソースをすべてクリーンアップします。
@@ -30,14 +25,19 @@ namespace RegexTest
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.メニューToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tortoiseMergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.差分ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Tortoise差分ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.縦横切替ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripTextBox = new CustomControl.ToolStripSpringTextBox();
-            this.regexModeControl = new RegexTest.RegexModeControl();
+            this.tabControl = new CustomControl.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.regexModeControl1 = new RegexTest.RegexModeControl();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -58,6 +58,7 @@ namespace RegexTest
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.メニューToolStripMenuItem,
+            this.差分ToolStripMenuItem,
             this.表示ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -67,18 +68,24 @@ namespace RegexTest
             // 
             // メニューToolStripMenuItem
             // 
-            this.メニューToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tortoiseMergeToolStripMenuItem});
             this.メニューToolStripMenuItem.Name = "メニューToolStripMenuItem";
             this.メニューToolStripMenuItem.Size = new System.Drawing.Size(68, 22);
             this.メニューToolStripMenuItem.Text = "メニュー";
             // 
-            // tortoiseMergeToolStripMenuItem
+            // diffToolStripMenuItem
             // 
-            this.tortoiseMergeToolStripMenuItem.Name = "tortoiseMergeToolStripMenuItem";
-            this.tortoiseMergeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.tortoiseMergeToolStripMenuItem.Text = "TortoiseMerge";
-            this.tortoiseMergeToolStripMenuItem.Click += new System.EventHandler(this.tortoiseMergeToolStripMenuItem_Click);
+            this.差分ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Tortoise差分ToolStripMenuItem});
+            this.差分ToolStripMenuItem.Name = "diffToolStripMenuItem";
+            this.差分ToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
+            this.差分ToolStripMenuItem.Text = "差分";
+            // 
+            // diffByTortoiseToolStripMenuItem
+            // 
+            this.Tortoise差分ToolStripMenuItem.Name = "diffByTortoiseToolStripMenuItem";
+            this.Tortoise差分ToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.Tortoise差分ToolStripMenuItem.Text = "Tortoise";
+            this.Tortoise差分ToolStripMenuItem.Click += new System.EventHandler(this.diffByTortoiseToolStripMenuItem_Click);
             // 
             // 表示ToolStripMenuItem
             // 
@@ -97,36 +104,58 @@ namespace RegexTest
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripTextBox});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 341);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 344);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(592, 25);
+            this.statusStrip1.Size = new System.Drawing.Size(592, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripTextBox
+            // tabControl
             // 
-            this.toolStripTextBox.Name = "toolStripTextBox";
-            this.toolStripTextBox.Size = new System.Drawing.Size(544, 25);
-            this.toolStripTextBox.Spring = true;
-            this.toolStripTextBox.Text = "C:\\Program Files\\TortoiseSVN\\bin\\TortoiseMerge.exe";
-            this.toolStripTextBox.Leave += new System.EventHandler(this.toolStripTextBox_Leave);
+            this.tabControl.CloseOnClickTabClose = true;
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(592, 318);
+            this.tabControl.TabIndex = 4;
             // 
-            // regexModeControl
+            // tabPage1
             // 
-            this.regexModeControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.regexModeControl.Location = new System.Drawing.Point(0, 26);
-            this.regexModeControl.Name = "regexModeControl";
-            this.regexModeControl.Size = new System.Drawing.Size(592, 315);
-            this.regexModeControl.TabIndex = 4;
-            this.regexModeControl.TextChanged += new System.EventHandler(this.regexModeControl_TextChanged);
+            this.tabPage1.Controls.Add(this.regexModeControl1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(584, 292);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "NewTab　　";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // regexModeControl1
+            // 
+            this.regexModeControl1.BackColor = System.Drawing.SystemColors.Control;
+            this.regexModeControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.regexModeControl1.Location = new System.Drawing.Point(3, 3);
+            this.regexModeControl1.Name = "regexModeControl1";
+            this.regexModeControl1.Size = new System.Drawing.Size(578, 286);
+            this.regexModeControl1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tabControl);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 26);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(592, 318);
+            this.panel1.TabIndex = 5;
+            this.panel1.DoubleClick += new System.EventHandler(this.panel1_DoubleClick);
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.ClientSize = new System.Drawing.Size(592, 366);
-            this.Controls.Add(this.regexModeControl);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusStrip1);
@@ -135,20 +164,25 @@ namespace RegexTest
             this.Text = "正規表現テスト(RegexTest) 改造版";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.tabControl.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-        private LinkLabel linkLabel1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem メニューToolStripMenuItem;
-        private ToolStripMenuItem 表示ToolStripMenuItem;
-        private ToolStripMenuItem 縦横切替ToolStripMenuItem;
-        private StatusStrip statusStrip1;
-        private CustomControl.ToolStripSpringTextBox toolStripTextBox;
-        private ToolStripMenuItem tortoiseMergeToolStripMenuItem;
-        private global::RegexTest.RegexModeControl regexModeControl;
+
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem メニューToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 表示ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 縦横切替ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 差分ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Tortoise差分ToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private CustomControl.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPage1;
+        private RegexTest.RegexModeControl regexModeControl1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

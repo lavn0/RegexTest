@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace RegexTest
+﻿namespace RegexTest
 {
     partial class RegexModeControl
     {
@@ -317,7 +315,6 @@ namespace RegexTest
             this.Name = "RegexModeControl";
             this.Size = new System.Drawing.Size(592, 320);
             this.Load += new System.EventHandler(this.RegexModeControl_Load);
-            this.ParentChanged += new System.EventHandler(this.RegexModeControl_ParentChanged);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -341,22 +338,22 @@ namespace RegexTest
 
         #endregion
 
-        private SplitContainer splitContainer1;
-        private SplitContainer splitContainer2;
-        private SplitContainer splitContainer3;
-        private SplitContainer splitContainer4;
-        private TextBox inputText;
-        private TextBox patternText;
-        private TextBox replaceText;
-        private TextBox resultText;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private ComboBox regexMode;
-        private CheckedListBox regexOptions;
-        private Button startButton;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.TextBox inputText;
+        private System.Windows.Forms.TextBox patternText;
+        private System.Windows.Forms.TextBox replaceText;
+        private System.Windows.Forms.TextBox resultText;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox regexMode;
+        private System.Windows.Forms.CheckedListBox regexOptions;
+        private System.Windows.Forms.Button startButton;
     }
 }

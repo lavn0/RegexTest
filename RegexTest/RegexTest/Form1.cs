@@ -21,11 +21,6 @@ namespace RegexTest
             this.Text += " (v" + FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion + ")";
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            regexModeControl.Dispose();
-        }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LinkLabel label = (LinkLabel)sender;
@@ -33,35 +28,37 @@ namespace RegexTest
             label.LinkVisited = true;
         }
 
-        /// <summary>
-        /// TortoiseMergeの指定パスが変わった場合更新する
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripTextBox_Leave(object sender, EventArgs e)
+        private void diffByTortoiseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            regexModeControl.Tag = ((ToolStripTextBox)sender).Text;
-        }
-
-        /// <summary>
-        /// ユーザーコントロール側からTortoiseMergeの指定パスが変わった場合更新する
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void regexModeControl_TextChanged(object sender, EventArgs e)
-        {
-            toolStripTextBox.Text = ((UserControl)sender).Text;
-        }
-
-        private void tortoiseMergeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            regexModeControl.fireTortoiseMerge();
+            Control c = tabControl.SelectedTab.Controls[0];
+            if (c.GetType() == typeof(RegexTest.RegexModeControl))
+            {
+                ((RegexTest.RegexModeControl)c).fireTortoiseMerge();
+            }
         }
 
         private void 縦横切替ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            regexModeControl.ChangeOrientation();
+            Control c = tabControl.SelectedTab.Controls[0];
+            if (c.GetType() == typeof(RegexTest.RegexModeControl))
+            {
+                ((RegexTest.RegexModeControl)c).ChangeOrientation();
+            }
         }
 
+        /// <summary>
+        /// タブ右側余白ダブルクリック時の処理
+        /// 新規タブを作成する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panel1_DoubleClick(object sender, EventArgs e)
+        {
+            this.SuspendLayout();
+            TabPage newTabPage = new TabPage("NewTab　　");
+            newTabPage.Controls.Add(new RegexTest.RegexModeControl());
+            tabControl.TabPages.Add(newTabPage);
+            this.ResumeLayout();
+        }
     }
 }
