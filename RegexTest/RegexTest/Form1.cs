@@ -56,7 +56,9 @@ namespace RegexTest
         {
             this.SuspendLayout();
             TabPage newTabPage = new TabPage("NewTab　　");
-            newTabPage.Controls.Add(new RegexTest.RegexModeControl());
+            RegexModeControl regexModeControl = new RegexTest.RegexModeControl();
+            regexModeControl.Dock = DockStyle.Fill;
+            newTabPage.Controls.Add(regexModeControl);
             tabControl.TabPages.Add(newTabPage);
             this.ResumeLayout();
         }
