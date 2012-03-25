@@ -62,5 +62,25 @@ namespace RegexTest
             tabControl.TabPages.Add(newTabPage);
             this.ResumeLayout();
         }
+
+        /// <summary>
+        /// タブのダブルクリック時の処理
+        /// タブ表示名を変更する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabControl_DoubleClick(object sender, EventArgs e)
+        {
+            //フォームの作成
+            RenameForm renameForm = new RenameForm(((TabControl)sender).SelectedTab.Text.Trim());
+
+            //フォームの表示
+            if (renameForm.ShowDialog(this) == DialogResult.OK)
+            {
+                // タブ名の変更
+                this.tabControl.SelectedTab.Text = renameForm.textBox_Name.Text + "　　";
+            }
+            renameForm.Dispose();
+        }
     }
 }

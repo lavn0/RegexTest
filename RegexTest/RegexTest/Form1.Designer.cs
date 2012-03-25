@@ -120,6 +120,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(592, 318);
             this.tabControl.TabIndex = 4;
+            this.tabControl.DoubleClick += new System.EventHandler(this.tabControl_DoubleClick);
             // 
             // tabPage1
             // 
