@@ -28,7 +28,7 @@ namespace RegexTest
             label.LinkVisited = true;
         }
 
-        private void diffByTortoiseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tortoise差分ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Control c = tabControl.SelectedTab.Controls[0];
             if (c.GetType() == typeof(RegexTest.RegexModeControl))

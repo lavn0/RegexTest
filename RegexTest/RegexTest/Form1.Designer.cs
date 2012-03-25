@@ -72,20 +72,20 @@
             this.メニューToolStripMenuItem.Size = new System.Drawing.Size(68, 22);
             this.メニューToolStripMenuItem.Text = "メニュー";
             // 
-            // diffToolStripMenuItem
+            // 差分ToolStripMenuItem
             // 
             this.差分ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Tortoise差分ToolStripMenuItem});
-            this.差分ToolStripMenuItem.Name = "diffToolStripMenuItem";
+            this.差分ToolStripMenuItem.Name = "差分ToolStripMenuItem";
             this.差分ToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.差分ToolStripMenuItem.Text = "差分";
             // 
-            // diffByTortoiseToolStripMenuItem
+            // Tortoise差分ToolStripMenuItem
             // 
-            this.Tortoise差分ToolStripMenuItem.Name = "diffByTortoiseToolStripMenuItem";
+            this.Tortoise差分ToolStripMenuItem.Name = "Tortoise差分ToolStripMenuItem";
             this.Tortoise差分ToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.Tortoise差分ToolStripMenuItem.Text = "Tortoise";
-            this.Tortoise差分ToolStripMenuItem.Click += new System.EventHandler(this.diffByTortoiseToolStripMenuItem_Click);
+            this.Tortoise差分ToolStripMenuItem.Text = "Tortoise差分";
+            this.Tortoise差分ToolStripMenuItem.Click += new System.EventHandler(this.tortoise差分ToolStripMenuItem_Click);
             // 
             // 表示ToolStripMenuItem
             // 
