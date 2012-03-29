@@ -22,6 +22,7 @@
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.メニューToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -30,14 +31,18 @@
             this.表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.縦横切替ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.regexタブを追加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iDiffタブを追加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl = new CustomControl.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.regexModeControl1 = new RegexTest.RegexModeControl();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -83,7 +88,7 @@
             // Tortoise差分ToolStripMenuItem
             // 
             this.Tortoise差分ToolStripMenuItem.Name = "Tortoise差分ToolStripMenuItem";
-            this.Tortoise差分ToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.Tortoise差分ToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.Tortoise差分ToolStripMenuItem.Text = "Tortoise差分";
             this.Tortoise差分ToolStripMenuItem.Click += new System.EventHandler(this.tortoise差分ToolStripMenuItem_Click);
             // 
@@ -110,9 +115,42 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.regexタブを追加ToolStripMenuItem,
+            this.iDiffタブを追加ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 48);
+            // 
+            // regexタブを追加ToolStripMenuItem
+            // 
+            this.regexタブを追加ToolStripMenuItem.Name = "regexタブを追加ToolStripMenuItem";
+            this.regexタブを追加ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.regexタブを追加ToolStripMenuItem.Text = "Regexタブを追加";
+            this.regexタブを追加ToolStripMenuItem.Click += new System.EventHandler(this.CreateNewRegexTab);
+            // 
+            // iDiffタブを追加ToolStripMenuItem
+            // 
+            this.iDiffタブを追加ToolStripMenuItem.Name = "iDiffタブを追加ToolStripMenuItem";
+            this.iDiffタブを追加ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.iDiffタブを追加ToolStripMenuItem.Text = "IDiffタブを追加";
+            this.iDiffタブを追加ToolStripMenuItem.Click += new System.EventHandler(this.CreateNewIDiffTab);
+            // 
+            // panel1
+            // 
+            this.panel1.ContextMenuStrip = this.contextMenuStrip1;
+            this.panel1.Controls.Add(this.tabControl);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 26);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(592, 318);
+            this.panel1.TabIndex = 5;
+            this.panel1.DoubleClick += new System.EventHandler(this.CreateNewRegexTab);
+            // 
             // tabControl
             // 
-            this.tabControl.CloseOnClickTabClose = true;
+            this.tabControl.ContextMenuStrip = this.contextMenuStrip1;
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
@@ -125,30 +163,21 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.regexModeControl1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(584, 292);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "NewTab　　";
+            this.tabPage1.Text = "Regex　　";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // regexModeControl1
             // 
             this.regexModeControl1.BackColor = System.Drawing.SystemColors.Control;
             this.regexModeControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.regexModeControl1.Location = new System.Drawing.Point(3, 3);
+            this.regexModeControl1.Location = new System.Drawing.Point(0, 0);
             this.regexModeControl1.Name = "regexModeControl1";
-            this.regexModeControl1.Size = new System.Drawing.Size(578, 286);
+            this.regexModeControl1.Size = new System.Drawing.Size(584, 292);
             this.regexModeControl1.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tabControl);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 26);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(592, 318);
-            this.panel1.TabIndex = 5;
-            this.panel1.DoubleClick += new System.EventHandler(this.panel1_DoubleClick);
             // 
             // Form1
             // 
@@ -163,9 +192,10 @@
             this.Text = "正規表現テスト(RegexTest) 改造版";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,5 +213,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private RegexTest.RegexModeControl regexModeControl1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem regexタブを追加ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iDiffタブを追加ToolStripMenuItem;
     }
 }

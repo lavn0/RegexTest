@@ -82,6 +82,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IDiffControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IDiffControl.Designer.cs">
+      <DependentUpon>IDiffControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IDiffControl.resx">
+      <DependentUpon>IDiffControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegexModeControl.resx">
       <DependentUpon>RegexModeControl.cs</DependentUpon>

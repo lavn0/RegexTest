@@ -35,6 +35,11 @@ namespace RegexTest
             {
                 ((RegexTest.RegexModeControl)c).fireTortoiseMerge();
             }
+            else if (c.GetType() == typeof(RegexTest.IDiffControl))
+            {
+                ((RegexTest.IDiffControl)c).fireTortoiseIDiff();
+            }
+
         }
 
         private void 縦横切替ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,21 +49,45 @@ namespace RegexTest
             {
                 ((RegexTest.RegexModeControl)c).ChangeOrientation();
             }
+            else if (c.GetType() == typeof(RegexTest.IDiffControl))
+            {
+                ((RegexTest.IDiffControl)c).ChangeOrientation();
+            }
         }
 
         /// <summary>
-        /// タブ右側余白ダブルクリック時の処理
-        /// 新規タブを作成する
+        /// 新規Regexタブを作成する
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void panel1_DoubleClick(object sender, EventArgs e)
+        private void CreateNewRegexTab(object sender, EventArgs e)
+        {
+            RegexModeControl regexModeControl = new RegexTest.RegexModeControl();
+            CreateNewTab(regexModeControl, "Regex　　");
+        }
+
+        /// <summary>
+        /// 新規IDiffタブを作成する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CreateNewIDiffTab(object sender, EventArgs e)
+        {
+            IDiffControl idiffControl = new IDiffControl();
+            CreateNewTab(idiffControl, "IDiff　　");
+        }
+
+        /// <summary>
+        /// 新規タブを作成する
+        /// </summary>
+        /// <param name="appendControl">タブに追加するコントロール</param>
+        /// <param name="tabName">新規タブの表示名</param>
+        private void CreateNewTab(Control appendControl, string tabText)
         {
             this.SuspendLayout();
-            TabPage newTabPage = new TabPage("NewTab　　");
-            RegexModeControl regexModeControl = new RegexTest.RegexModeControl();
-            regexModeControl.Dock = DockStyle.Fill;
-            newTabPage.Controls.Add(regexModeControl);
+            TabPage newTabPage = new TabPage(tabText);
+            appendControl.Dock = DockStyle.Fill;
+            newTabPage.Controls.Add(appendControl);
             tabControl.TabPages.Add(newTabPage);
             this.ResumeLayout();
         }
