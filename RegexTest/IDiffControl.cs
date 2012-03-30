@@ -13,7 +13,12 @@ namespace RegexTest
     public partial class IDiffControl : UserControl
     {
         /// <summary>
-        /// TotoiseMerge用一時ファイル名リスト
+        /// TortoiseIDiff.exeの格納場所
+        /// </summary>
+        private string tortoiseIDiffPath = Properties.Resources.TortoiseIDiffPath;
+
+        /// <summary>
+        /// TotoiseIDiff用一時ファイル名リスト
         /// </summary>
         List<string> tmpFileNameList = new List<string>();
 
@@ -21,7 +26,6 @@ namespace RegexTest
         {
             InitializeComponent();
             this.Disposed += this.IDiffControl_Dispose;
-            this.Text = @"C:\Program Files\TortoiseSVN\bin\TortoiseIDiff.exe";
         }
 
         public void IDiffControl_Dispose(object sender, EventArgs e)
@@ -37,6 +41,27 @@ namespace RegexTest
         /// </summary>
         public void fireTortoiseIDiff()
         {
+            if (pictureBox1.Image == null || pictureBox2.Image == null)
+            {
+                return;
+            }
+            if (!File.Exists(tortoiseIDiffPath))
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.FileName = Path.GetFileName(tortoiseIDiffPath);
+                ofd.Title = ofd.FileName + "ファイルを選択してください。";
+                ofd.Filter = "実行ファイル (*.exe)|*.exe";
+                do
+                {
+                    tortoiseIDiffPath = Path.GetDirectoryName(tortoiseIDiffPath);
+                } while (!Directory.Exists(tortoiseIDiffPath));
+                ofd.InitialDirectory = tortoiseIDiffPath;
+                if (ofd.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+                tortoiseIDiffPath = ofd.FileName;
+            }
             string baseFileName = Path.GetTempFileName();
             string mineFileName = Path.GetTempFileName();
             pictureBox1.Image.Save(baseFileName);
@@ -44,17 +69,22 @@ namespace RegexTest
             pictureBox2.Image.Save(mineFileName);
             tmpFileNameList.Add(mineFileName);
 
-            // TortoiseMerge起動
+            // TortoiseIDiff起動
             Process process = new Process();
-            process.StartInfo.FileName = @"""" + this.Text + @"""";
+            process.StartInfo.FileName = @"""" + tortoiseIDiffPath + @"""";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardInput = true;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.CreateNoWindow = false;
-            process.StartInfo.Arguments = "/left:\"" + baseFileName + "\" /right:\"" + mineFileName + "\"";
+            process.StartInfo.Arguments = string.Format(Properties.Resources.TortoiseIDiffFormat, baseFileName, mineFileName);
             process.Start();
         }
 
+        /// <summary>
+        /// 入力文字列と結果の縦横構成を切り替える
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void ChangeOrientation()
         {
             if (splitContainer1.Orientation == Orientation.Horizontal)

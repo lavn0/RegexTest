@@ -61,6 +61,24 @@ namespace RegexTest.Properties {
         }
         
         /// <summary>
+        ///   /left:&quot;{0}&quot; /right:&quot;{1}&quot; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TortoiseIDiffFormat {
+            get {
+                return ResourceManager.GetString("TortoiseIDiffFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   C:\Program Files\TortoiseSVN\bin\TortoiseIDiff.exe に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TortoiseIDiffPath {
+            get {
+                return ResourceManager.GetString("TortoiseIDiffPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   /base:&quot;{0}&quot; /mine:&quot;{1}&quot; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string TortoiseMergeFormat {
