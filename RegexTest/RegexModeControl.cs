@@ -12,6 +12,11 @@ namespace RegexTest
     public partial class RegexModeControl : UserControl
     {
         /// <summary>
+        /// TortoiseMerge.exeの格納場所
+        /// </summary>
+        private string tortoiseMergePath = Properties.Resources.TortoiseMergePath;
+
+        /// <summary>
         /// TotoiseMerge用一時ファイル名リスト
         /// </summary>
         List<string> tmpFileNameList = new List<string>();
@@ -20,7 +25,6 @@ namespace RegexTest
         {
             InitializeComponent();
             this.Disposed += this.RegexModeControl_Dispose;
-            this.Text = @"C:\Program Files\TortoiseSVN\bin\TortoiseMerge.exe";
         }
 
         private void RegexModeControl_Dispose(object sender, EventArgs e)
@@ -233,32 +237,22 @@ namespace RegexTest
         /// <param name="e"></param>
         public void fireTortoiseMerge()
         {
-            if (!File.Exists(this.Text))
+            if (!File.Exists(tortoiseMergePath))
             {
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Title = "TortoiseMerge.exeファイルを選択してください。";
+                ofd.FileName = Path.GetFileName(tortoiseMergePath);
+                ofd.Title = ofd.FileName + "ファイルを選択してください。";
                 ofd.Filter = "実行ファイル (*.exe)|*.exe";
-                if (Directory.Exists(@"C:\Program Files\TortoiseSVN\bin"))
+                do
                 {
-                    ofd.InitialDirectory = @"C:\Program Files\TortoiseSVN\bin";
-                }
-                else if (Directory.Exists(@"C:\Program Files\TortoiseSVN"))
-                {
-                    ofd.InitialDirectory = @"C:\Program Files\TortoiseSVN";
-                }
-                else if (Directory.Exists(@"C:\Program Files"))
-                {
-                    ofd.InitialDirectory = @"C:\Program Files";
-                }
-                ofd.FileName = "TortoiseMerge.exe";
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    this.Text = ofd.FileName;
-                }
-                else
+                    tortoiseMergePath = Path.GetDirectoryName(tortoiseMergePath);
+                } while (!Directory.Exists(tortoiseMergePath));
+                ofd.InitialDirectory = tortoiseMergePath;
+                if (ofd.ShowDialog() != DialogResult.OK)
                 {
                     return;
                 }
+                tortoiseMergePath = ofd.FileName;
             }
             string baseFileName = Path.GetTempFileName();
             string mineFileName = Path.GetTempFileName();
@@ -275,12 +269,12 @@ namespace RegexTest
 
             // TortoiseMerge起動
             Process process = new Process();
-            process.StartInfo.FileName = @"""" + this.Text + @"""";
+            process.StartInfo.FileName = @"""" + tortoiseMergePath + @"""";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardInput = true;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.CreateNoWindow = false;
-            process.StartInfo.Arguments = "/base:\"" + baseFileName + "\" /mine:\"" + mineFileName + "\"";
+            process.StartInfo.Arguments = string.Format(Properties.Resources.TortoiseMergeFormat, baseFileName, mineFileName);
             process.Start();
         }
     }
