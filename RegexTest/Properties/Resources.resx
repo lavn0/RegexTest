@@ -130,7 +130,7 @@
     <comment>TortoiseMerge.exeのコマンドライン引数フォーマット</comment>
   </data>
   <data name="TortoiseMergePath" xml:space="preserve">
-    <value>C:\Program Files\TortoisesSVN\bin\TortoiseMerge.exe</value>
+    <value>C:\Program Files\TortoiseSVN\bin\TortoiseMerge.exe</value>
     <comment>TortoiseMerge.exeの標準格納場所</comment>
   </data>
 </root>

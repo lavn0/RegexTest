@@ -88,7 +88,7 @@ namespace RegexTest.Properties {
         }
         
         /// <summary>
-        ///   C:\Program Files\TortoisesSVN\bin\TortoiseMerge.exe に類似しているローカライズされた文字列を検索します。
+        ///   C:\Program Files\TortoiseSVN\bin\TortoiseMerge.exe に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string TortoiseMergePath {
             get {
